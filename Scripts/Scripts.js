@@ -1,5 +1,5 @@
 //to make the sponge draggable
-dragElement(document.getElementById("Sponge"));
+dragElement(document.getElementById("SpongeDiv"));
 
 
 function dragElement(elmnt) {
