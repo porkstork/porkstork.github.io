@@ -1,4 +1,5 @@
 #SpongeDiv{
+    max-width: 100%;
     position: absolute;
     top: 50px;
     left: 50px;
@@ -6,11 +7,23 @@
     height: 150px;
 }
 #Sponge{
+    max-width: 100%;
     padding: 10px;
     cursor: move;
     z-index: 10;
     object-fit: contain;
     -drag: none;  
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+#Pibble{
+    max-width: fit-content;
+    position: absolute;
+    pointer-events: none;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
