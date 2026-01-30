@@ -19,7 +19,7 @@
 }
 
 #Pibble{
-    max-width: fit-content;
+    max-width: 100%;
     position: absolute;
     pointer-events: none;
     user-select: none;
