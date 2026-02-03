@@ -5,7 +5,6 @@
     left: 50px;
 }
 #Sponge{
-    max-width: 100%;
     padding: 10px;
     cursor: move;
     z-index: 10;
