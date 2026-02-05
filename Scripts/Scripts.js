@@ -24,4 +24,5 @@ function makeDraggable(state, el) {
     el.addEventListener('pointermove', move)
     //enables touch based interaction
     el.addEventListener('touchstart', (e) => e.preventDefault());
+    el.addEventListener('dragstart', (e) => e.preventDefault());
   }
