@@ -1,28 +1,39 @@
 //to make the sponge draggable
-makeDraggable(document.getElementById("SpongeDiv"));
-function makeDraggable(state, el) {
-    function start(event) {
-        if (event.button !== 0) return; // left button only
-        let {x, y} = state.eventToCoordinates(event);
-        state.dragging = {dx: state.pos.x - x, dy: state.pos.y - y};
-        el.setPointerCapture(event.pointerId);
-    }
+dragElement(document.getElementById("SpongeDiv"));
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    elmnt.onmousedown = dragMouseDown;
+  
 
-    function end(_event) {
-        state.dragging = null;
-    }
 
-    function move(event) {
-        if (!state.dragging) return;
-        let {x, y} = state.eventToCoordinates(event);
-        state.pos = {x: x + state.dragging.dx, y: y + state.dragging.dy};
-    }
-
-    el.addEventListener('pointerdown', start);
-    el.addEventListener('pointerup', end);
-    el.addEventListener('pointercancel', end);
-    el.addEventListener('pointermove', move)
-    //enables touch based interaction
-    el.addEventListener('touchstart', (e) => e.preventDefault());
-    el.addEventListener('dragstart', (e) => e.preventDefault());
+function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
   }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    //stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+
+}
