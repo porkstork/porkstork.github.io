@@ -37,7 +37,7 @@ function dragMouseDown(e) {
   }
 
 }
-const draggables = document.querySelectorAll('.SpongeDiv');
+const draggables = document.getElementById('SpongeDiv');
  
 let activeItem = null;
 let initialX, initialY;
