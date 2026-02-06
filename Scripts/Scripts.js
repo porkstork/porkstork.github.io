@@ -37,25 +37,13 @@ function dragMouseDown(e) {
   }
 
 }
-const draggables = document.getElementById('SpongeDiv');
+const draggables = document.querySelector('SpongeDiv');
  
 let activeItem = null;
 let initialX, initialY;
 let currentX, currentY;
  
-// Touch Start: Record initial position
-draggables.forEach(item => {
-  item.addEventListener('touchstart', (e) => {
-    activeItem = item;
-    const touch = e.touches[0]; // Get first touch (ignore multi-touch)
-    
-    // Store initial element position and touch coordinates
-    initialX = touch.clientX - item.offsetLeft;
-    initialY = touch.clientY - item.offsetTop;
-    
-    item.classList.add('dragging');
-  });
-});
+
  
 // Touch Move: Update element position
 document.addEventListener('touchmove', (e) => {
