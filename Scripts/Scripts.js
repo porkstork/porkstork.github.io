@@ -37,3 +37,46 @@ function dragMouseDown(e) {
   }
 
 }
+const draggables = document.querySelectorAll('.SpongeDiv');
+ 
+let activeItem = null;
+let initialX, initialY;
+let currentX, currentY;
+ 
+// Touch Start: Record initial position
+draggables.forEach(item => {
+  item.addEventListener('touchstart', (e) => {
+    activeItem = item;
+    const touch = e.touches[0]; // Get first touch (ignore multi-touch)
+    
+    // Store initial element position and touch coordinates
+    initialX = touch.clientX - item.offsetLeft;
+    initialY = touch.clientY - item.offsetTop;
+    
+    item.classList.add('dragging');
+  });
+});
+ 
+// Touch Move: Update element position
+document.addEventListener('touchmove', (e) => {
+  if (activeItem) {
+    e.preventDefault(); // Prevent scrolling during drag
+    const touch = e.touches[0];
+    
+    // Calculate new position
+    currentX = touch.clientX - initialX;
+    currentY = touch.clientY - initialY;
+    
+    // 
+    activeItem.style.transform = `translate(${currentX}px, ${currentY}px)`;
+  }
+}, { passive: false }); // `passive: false` allows preventDefault()
+ 
+
+document.addEventListener('touchend', () => {
+  if (activeItem) {
+    activeItem.classList.remove('dragging');
+    activeItem.style.transform = ''; // Reset transform
+    activeItem = null;
+  }
+});
