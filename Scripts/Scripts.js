@@ -37,46 +37,14 @@ function dragMouseDown(e) {
   }
 
 }
-const draggables = document.querySelector('SpongeDiv');
- 
-let activeItem = null;
-let initialX, initialY;
-let currentX, currentY;
- 
-// Touch Start: Record initial position
-  document.addEventListener('touchstart', (e) => {
-    activeItem = draggables;
-    let item = activeItem;
-    const touch = e.touches[0]; // Get first touch (ignore multi-touch)
-    
-    // Store initial element position and touch coordinates
-    initialX = touch.clientX - item.offsetLeft;
-    initialY = touch.clientY - item.offsetTop;
-    
-    item.classList.add('dragging');
-  });
 
- 
-// Touch Move: Update element position
-document.addEventListener('touchmove', (e) => {
-  if (activeItem) {
-    e.preventDefault(); // Prevent scrolling during drag
-    const touch = e.touches[0];
-    
-    // Calculate new position
-    currentX = touch.clientX - initialX;
-    currentY = touch.clientY - initialY;
-    
-    // 
-    activeItem.style.transform = `translate(${currentX}px, ${currentY}px)`;
-  }
-}, { passive: false }); // `passive: false` allows preventDefault()
- 
+var spongeMobile = document.getElementById("SpongeDiv");
 
-document.addEventListener('touchend', () => {
-  if (activeItem) {
-    activeItem.classList.remove('dragging');
-    activeItem.style.transform = ''; // Reset transform
-    activeItem = null;
-  }
-});
+spongeMobile.addEventListener('touchmove',function(ev)){
+
+  var touchLocation = ev.targetTouches[0];
+
+  spongeMobile.style.left = touchLocation.pageX + 'px';
+  spongeMobile.style.top = touchLocation.pageY + 'px';
+
+}
