@@ -43,6 +43,18 @@ let activeItem = null;
 let initialX, initialY;
 let currentX, currentY;
  
+// Touch Start: Record initial position
+  document.addEventListener('touchstart', (e) => {
+    activeItem = draggables;
+    let item = activeItem;
+    const touch = e.touches[0]; // Get first touch (ignore multi-touch)
+    
+    // Store initial element position and touch coordinates
+    initialX = touch.clientX - item.offsetLeft;
+    initialY = touch.clientY - item.offsetTop;
+    
+    item.classList.add('dragging');
+  });
 
  
 // Touch Move: Update element position
