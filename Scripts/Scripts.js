@@ -40,7 +40,7 @@ function dragMouseDown(e) {
 
 var spongeMobile = document.getElementById("SpongeDiv");
 
-spongeMobile.addEventListener('touchmove',function(ev)){
+spongeMobile.addEventListener('touchmove',function(ev){
 
   var touchLocation = ev.targetTouches[0];
 
