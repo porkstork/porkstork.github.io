@@ -47,4 +47,4 @@ spongeMobile.addEventListener('touchmove',function(ev){
   spongeMobile.style.left = touchLocation.pageX + 'px';
   spongeMobile.style.top = touchLocation.pageY + 'px';
 
-}
+});
